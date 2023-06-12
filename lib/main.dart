@@ -40,8 +40,23 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.redAccent, //background color of app bar
         title: const Text("DatePicker in Flutter"),
       ),
-      body:
-          Container(), // This trailing comma makes auto-formatting nicer for build methods.
+      body: Container(
+        padding: const EdgeInsets.all(15),
+        height: MediaQuery.of(context).size.width / 3,
+        child: Center(
+          child: TextField(
+            controller: dateInput,
+            //editing controller of this TextField
+            decoration: const InputDecoration(
+              icon: Icon(Icons.calendar_today),
+              labelText: 'Enter Date',
+            ),
+            //set readOnly true, so that user will not able to edit text
+            readOnly: true,
+            onTap: () async {},
+          ),
+        ),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
