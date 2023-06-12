@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,7 +54,22 @@ class _HomePageState extends State<HomePage> {
             ),
             //set readOnly true, so that user will not able to edit text
             readOnly: true,
-            onTap: () async {},
+            onTap: () async {
+              DateTime? pickedDate = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(1950),
+                lastDate: DateTime(2100),
+              );
+              if (pickedDate != null) {
+                String formattedDate =
+                    DateFormat('yyyy-MM-dd').format(pickedDate);
+                setState(() {
+                  dateInput.text =
+                      formattedDate; //set output date to TextField value.
+                });
+              }
+            },
           ),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
